@@ -35,14 +35,18 @@ export class News extends Component {
   }
 
   async updateNews(){
-    let url= `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f99e64fef2284b2e87f2aa09a002ee17&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.props.setProgress(10);
+    let url= `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     // eslint-disable-next-line
     this.setState({loading: false});
     let data= await fetch(url);
+    this.props.setProgress(30);
     let parsedData= await data.json();
+    this.props.setProgress(70);
     this.setState({articles: parsedData.articles, 
           totalResults: parsedData.totalResults, 
           loading: false  })
+    this.props.setProgress(100);
   }
 
   async componentDidMount(){
