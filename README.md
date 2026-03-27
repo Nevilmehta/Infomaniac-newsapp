@@ -1,70 +1,178 @@
-# Getting Started with Create React App
+# 📰 Infomaniac - News Aggregator App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Infomaniac is a modern **React-based news application** that fetches and displays the latest headlines by category using the NewsAPI. It provides a smooth user experience with infinite scrolling, dynamic routing, and a loading progress bar.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📌 Project Overview
 
-### `npm start`
+* **Name:** Infomaniac
+* **Purpose:** Browse latest news by category
+* **Source:** https://newsapi.org/v2/top-headlines
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ✨ Key Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* 📂 Category-based news (Sports, Business, Entertainment, etc.)
+* 🔄 Infinite scrolling for seamless browsing
+* 📊 Top loading progress bar
+* 🧭 Dynamic routing using React Router
+* 📰 Clean article cards UI
+* 📱 Responsive Bootstrap layout
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Tech Stack
 
-### `npm run build`
+* **Frontend:** React (Hooks + Functional Components)
+* **Routing:** React Router v6
+* **UI:** Bootstrap
+* **APIs:** NewsAPI
+* **Libraries:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  * react-top-loading-bar
+  * react-infinite-scroll-component
+  * prop-types
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚙️ Prerequisites
 
-### `npm run eject`
+* Node.js (>= 14)
+* npm or yarn
+* NewsAPI key
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+👉 Get your free API key: https://newsapi.org/register
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔐 Environment Variables
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Create a `.env` file in the root directory:
 
-## Learn More
+```env
+REACT_APP_NEWS_API=your_api_key_here
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🛠️ Installation
 
-### Code Splitting
+```bash
+git clone https://github.com/your-username/infomaniac-newsapp.git
+cd infomaniac-newsapp
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## ▶️ Run Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm start
+```
 
-### Making a Progressive Web App
+Open: http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🧩 Routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+| Path           | Category         |
+| -------------- | ---------------- |
+| /              | Sports (default) |
+| /business      | Business         |
+| /entertainment | Entertainment    |
+| /general       | General          |
+| /health        | Health           |
+| /science       | Science          |
+| /sports        | Sports           |
+| /technology    | Technology       |
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🔍 Developer Notes
 
-### `npm run build` fails to minify
+### ⚙️ App Behavior
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* `App.js` controls:
+
+  * `pageSize = 5`
+  * `country = "in"`
+
+* `News.js` handles:
+
+  * Initial data fetch (`updateNews`)
+  * Infinite scrolling (`fetchMoreData`)
+  * Progress bar updates (10 → 30 → 70 → 100)
+  * Dynamic document title per category
+
+---
+
+### ⚠️ Improvements / Fixes
+
+* Replace hardcoded API key with:
+
+```js
+props.apiKey
+```
+
+* Avoid state update issues by using functional updates:
+
+```js
+setState(prev => ...)
+```
+
+---
+
+## 📦 Available Scripts
+
+```bash
+npm start     # Run development server
+npm test      # Run tests
+npm run build # Build for production
+npm run eject # Eject config
+```
+
+---
+
+## 🚀 Production Build
+
+```bash
+npm run build
+```
+
+Deploy the `build/` folder.
+
+---
+
+## 🛡️ Notes for Reviewers
+
+* `components/Spinner.js` → loading UI
+* `components/NewsItem.js` → article card UI
+* Modify `pageSize` and `country` in `App.js`
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create a branch:
+
+```bash
+git checkout -b feat/your-feature
+```
+
+3. Commit changes
+4. Push and create PR
+
+---
+
+## 👨‍💻 Author
+
+Nevil Mehta
+
+---
+
+## 📜 License
+
+This project is for educational purposes only.
